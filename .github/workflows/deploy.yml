@@ -31,6 +31,10 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Turns Pages on (source: GitHub Actions) the first time this runs,
+          # so no manual switch is needed in Settings -> Pages.
+          enablement: true
 
       - name: Build with Jekyll
         run: bundle exec jekyll build --trace
