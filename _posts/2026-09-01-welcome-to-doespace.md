@@ -1,14 +1,15 @@
 ---
 layout: post
-title: "Welcome to DoeSpace"
-date: 2026-09-01 09:00:00 -0400
+title: Welcome to DoeSpace
+date: 2026-09-02
 published: true
 featured: true
-thumbnail: /assets/images/placeholders/thumbnail.svg
-excerpt: "DoeSpace is open. This is the first entry in Lain Doe's personal blog and artistry space."
-categories: [updates]
+thumbnail: /assets/images/blog/IMG_6849.jpeg
+excerpt: DoeSpace is open. This is the first entry in Lain Doe's personal blog
+  and artistry space.
+categories:
+  - updates
 ---
-
 DoeSpace is open.
 
 This is the very first story posted here, and it exists mostly to prove that the
@@ -22,6 +23,6 @@ and everything happening in the Funemployed world.
 
 ## What comes next
 
-The layout you are looking at is the foundation only. The background, borders,
-GIFs, buttons, music player, and the Funemployed blingy all arrive later. For
+Lain Doe is preparing to jump into Funemployed Land. Stay tuned for the big announcement.   
+  
 now, the structure is the point.
