@@ -80,11 +80,30 @@ The output lands in `_site/` (not committed).
 
 ---
 
+## How to connect the repository to Pages CMS
+
+Do this once:
+
+1. Go to <https://app.pagescms.org> and click **Sign in with GitHub**.
+2. Authorize the Pages CMS GitHub App.
+3. When asked which repositories it may access, grant access to
+   **laindoe/doespace** (either "All repositories" or "Only select
+   repositories" with `doespace` ticked).
+4. Back in Pages CMS, open the **doespace** repository and choose the **main**
+   branch.
+5. Pages CMS reads `.pages.yml` from the branch and shows two editing areas:
+   **Blog Stories** and **Profile Details**.
+
+Every save in Pages CMS is a commit to `main`, which triggers the deploy
+workflow, so edits go live on their own.
+
+---
+
 ## How to publish a story with Pages CMS
 
-1. Go to <https://app.pagescms.org> and sign in with GitHub.
-2. Open the **doespace** repository, then the **Blog Stories** collection.
-3. Click **Add an entry** and fill in the fields:
+1. Open the **doespace** repository in Pages CMS, then the **Blog Stories**
+   collection.
+2. Click **Add an entry** and fill in the fields:
 
    | Field | What it does |
    |---|---|
@@ -97,7 +116,7 @@ The output lands in `_site/` (not committed).
    | Categories | Optional tags |
    | Story Body | The story itself |
 
-4. Click **Save**. Pages CMS commits a Markdown file to `_posts/` named
+3. Click **Save**. Pages CMS commits a Markdown file to `_posts/` named
    `YYYY-MM-DD-story-title.md`, GitHub Actions rebuilds the site, and the
    story appears on the profile and at `/blog/` within a minute or two.
 
@@ -143,9 +162,13 @@ when the real artwork is ready.
 1. In the repository, go to **Settings → Pages**.
 2. Under **Build and deployment → Source**, choose **GitHub Actions**.
    (Do *not* choose "Deploy from a branch" — this repo deploys via a workflow.)
+   This switch has to be flipped by hand once — the workflow token is not
+   allowed to turn Pages on by itself, and until it is set the **Setup Pages**
+   step fails with *"Get Pages site failed"*.
 3. Push to `main`. The workflow in `.github/workflows/deploy.yml` builds the
-   site with Jekyll and publishes it. You can also run it by hand from the
-   **Actions** tab via **Run workflow**.
+   site with Jekyll and publishes it. To publish without a new commit — for
+   example right after step 2 — open the **Actions** tab, pick
+   **Build and deploy DoeSpace to GitHub Pages**, and click **Run workflow**.
 4. The site appears at <https://laindoe.github.io/doespace/>.
 
 If the repository is ever renamed or moved to a user page, update `url` and
