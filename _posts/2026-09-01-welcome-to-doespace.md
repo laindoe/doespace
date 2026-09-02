@@ -24,5 +24,3 @@ and everything happening in the Funemployed world.
 ## What comes next
 
 Lain Doe is preparing to jump into Funemployed Land. Stay tuned for the big announcement.   
-
-now, the structure is the point.
