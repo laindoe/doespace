@@ -1,0 +1,19 @@
+<div class="module module-friends">
+  <div class="module-header">Lain Has 8 Billion Friends</div>
+  <div class="module-body">
+
+    <ul class="friend-list">
+      {%- for friend in site.data.modules.friends %}
+      <li class="friend-card">
+        <a href="{{ friend.url }}">
+          <img class="friend-image" src="{{ friend.image | relative_url }}" alt="{{ friend.name }}">
+          <span class="friend-name">{{ friend.name }}</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ul>
+
+    <p class="only-homie"><a href="#">Click here if you want to be my Only Homie.</a></p>
+
+  </div>
+</div>

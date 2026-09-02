@@ -1,0 +1,20 @@
+{%- assign profile = site.data.profile -%}
+<div class="module module-profile">
+  <div class="module-header">{{ profile.display_name | default: "Lain Doe" }}</div>
+  <div class="module-body">
+
+    <img class="profile-image"
+         src="{{ profile.profile_image | default: '/assets/images/placeholders/profile.svg' | relative_url }}"
+         alt="{{ profile.display_name | default: 'Lain Doe' }}">
+
+    <p class="profile-quote">&ldquo;{{ profile.quote }}&rdquo;</p>
+
+    <ul class="profile-facts">
+      <li>{{ profile.age }}</li>
+      <li>{{ profile.location }}</li>
+    </ul>
+
+    <p class="online-now">{{ profile.online_status | default: "Online Now!" }}</p>
+
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="module module-details">
+  <div class="module-header">Lain&rsquo;s Details</div>
+  <div class="module-body">
+    <table class="detail-table">
+      {%- for item in site.data.modules.details %}
+      <tr>
+        <th>{{ item.label }}</th>
+        <td>{{ item.value }}</td>
+      </tr>
+      {%- endfor %}
+    </table>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+{%- assign track = site.data.modules.now_playing -%}
+<div class="module module-player">
+  <div class="module-header">Media Player</div>
+  <div class="module-body">
+
+    <p class="now-playing">Now Playing</p>
+
+    <div class="player-box">
+      <img class="album-art"
+           src="{{ '/assets/images/placeholders/album.svg' | relative_url }}"
+           alt="Album art placeholder">
+      <div class="player-info">
+        <p class="track-title">{{ track.song }}</p>
+        <p class="track-artist">{{ track.artist }}</p>
+        <p class="player-controls">
+          <span class="player-button">&#9198;</span>
+          <span class="player-button">&#9654;</span>
+          <span class="player-button">&#9209;</span>
+          <span class="player-button">&#9197;</span>
+        </p>
+        <p class="player-note">Player controls are placeholders in Phase 1.</p>
+      </div>
+    </div>
+
+    <p class="player-projects-heading">Other Projects</p>
+    <ul class="player-projects">
+      {%- for project in site.data.modules.other_projects %}
+      <li><a href="{{ project.url }}">{{ project.label }}</a></li>
+      {%- endfor %}
+    </ul>
+
+  </div>
+</div>

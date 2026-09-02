@@ -1,0 +1,75 @@
+# ---------------------------------------------------------------
+# Filler text for the simple left-column modules.
+# Phase 1 placeholders - edit directly in this file.
+# ---------------------------------------------------------------
+
+interests:
+  - label: General
+    value: Placeholder filler text.
+  - label: Music
+    value: Placeholder filler text.
+  - label: Movies
+    value: Placeholder filler text.
+  - label: Television
+    value: Placeholder filler text.
+  - label: Books
+    value: Placeholder filler text.
+  - label: Heroes
+    value: Placeholder filler text.
+
+details:
+  - label: Status
+    value: Placeholder filler text.
+  - label: Here for
+    value: Placeholder filler text.
+  - label: Hometown
+    value: Placeholder filler text.
+  - label: Zodiac Sign
+    value: Placeholder filler text.
+  - label: Smoke / Drink
+    value: Placeholder filler text.
+  - label: Occupation
+    value: Placeholder filler text.
+
+schools:
+  - name: Placeholder School Name
+    detail: Placeholder degree or program.
+    years: "0000 - 0000"
+  - name: Placeholder School Name
+    detail: Placeholder degree or program.
+    years: "0000 - 0000"
+
+contact_links:
+  - label: Email
+    url: "#"
+  - label: Instagram
+    url: "#"
+  - label: Threads
+    url: "#"
+  - label: TikTok
+    url: "#"
+  - label: YouTube
+    url: "#"
+  - label: Send Secret Message
+    url: "#"
+
+now_playing:
+  song: Funemployed
+  artist: Lain Doe
+
+other_projects:
+  - label: Placeholder Project One
+    url: "#"
+  - label: Placeholder Project Two
+    url: "#"
+
+friends:
+  - name: Lain Doe Love
+    url: "#"
+    image: /assets/images/placeholders/friend.svg
+  - name: Ten Grand Company
+    url: "#"
+    image: /assets/images/placeholders/friend.svg
+  - name: You
+    url: "#"
+    image: /assets/images/placeholders/smiley.svg

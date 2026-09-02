@@ -1,0 +1,14 @@
+<div class="module module-about">
+  <div class="module-header">About Me</div>
+  <div class="module-body">
+
+    <div class="about-text">
+      {{ site.data.profile.about_me | markdownify }}
+    </div>
+
+    <p class="about-links">
+      <a href="{{ site.data.profile.homeostasis_url | default: '#' }}">Homeostasis</a>
+    </p>
+
+  </div>
+</div>

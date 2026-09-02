@@ -1,0 +1,44 @@
+# ---------------------------------------------------------------
+# DoeSpace - Jekyll configuration
+# Project page: https://laindoe.github.io/doespace/
+# ---------------------------------------------------------------
+
+title: DoeSpace
+tagline: a place for bonding
+description: The personal blog and artistry space of Lain Doe.
+
+# GitHub project page settings.
+# The site lives at <url><baseurl>/ = https://laindoe.github.io/doespace/
+url: https://laindoe.github.io
+baseurl: /doespace
+
+# Blog posts
+permalink: /blog/:title/
+future: false
+unpublished: false
+
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Number of posts shown in the "Lain's Latest Blog Entries" module
+latest_posts_count: 4
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      published: true
+      featured: false
+      categories: []
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .github
+  - .jekyll-cache

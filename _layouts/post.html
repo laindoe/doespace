@@ -1,0 +1,30 @@
+---
+layout: default
+---
+<div class="post-page">
+
+  <div class="module">
+    <div class="module-header">{{ page.title }}</div>
+    <div class="module-body">
+
+      <p class="post-meta">
+        Posted {{ page.date | date: "%b %e, %Y" }}
+        {%- if page.categories and page.categories.size > 0 %}
+        &middot; {{ page.categories | join: ", " }}
+        {%- endif %}
+      </p>
+
+      {% if page.thumbnail %}
+      <p><img class="post-thumbnail" src="{{ page.thumbnail | relative_url }}" alt="{{ page.title }}"></p>
+      {% endif %}
+
+      <div class="post-body">
+        {{ content }}
+      </div>
+
+      <p class="post-back"><a href="{{ '/blog/' | relative_url }}">&laquo; Back to all blog entries</a></p>
+
+    </div>
+  </div>
+
+</div>

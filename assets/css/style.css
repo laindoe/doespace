@@ -1,0 +1,462 @@
+/* ---------------------------------------------------------------
+   DoeSpace - Phase 1 stylesheet
+   Intentionally plain: Arial/Helvetica, bordered modules, blue
+   MySpace-style headers, white panels. All decoration comes later.
+   --------------------------------------------------------------- */
+
+/* ---- Base ---------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 10px;
+  background: #dfe6ef;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+a {
+  color: #003399;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #cc0000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+/* Traditional MySpace profile proportions. */
+.page {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ---- Site header / footer ------------------------------------ */
+
+.site-header {
+  background: #6699cc;
+  border: 1px solid #003399;
+  color: #ffffff;
+  padding: 6px 10px;
+  margin-bottom: 10px;
+}
+
+.site-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-tagline {
+  font-size: 11px;
+  margin-left: 8px;
+}
+
+.site-nav {
+  float: right;
+  font-size: 11px;
+  padding-top: 6px;
+}
+
+.site-nav a {
+  color: #ffffff;
+}
+
+.site-header::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.site-footer {
+  border: 1px solid #003399;
+  background: #ffffff;
+  padding: 6px 10px;
+  margin-top: 10px;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* ---- Two-column profile grid --------------------------------- */
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 10px;
+  align-items: start;
+}
+
+.column {
+  min-width: 0;
+}
+
+/* ---- Modules ------------------------------------------------- */
+
+.module {
+  border: 1px solid #003399;
+  background: #ffffff;
+  margin-bottom: 10px;
+}
+
+.module:last-child {
+  margin-bottom: 0;
+}
+
+.module-header {
+  background: #6699cc;
+  border-bottom: 1px solid #003399;
+  color: #ffffff;
+  font-weight: bold;
+  padding: 4px 8px;
+}
+
+.module-body {
+  padding: 10px;
+}
+
+.module-body > *:last-child {
+  margin-bottom: 0;
+}
+
+.placeholder-note {
+  color: #555555;
+  font-size: 12px;
+}
+
+/* ---- Profile module ------------------------------------------ */
+
+.profile-image {
+  display: block;
+  width: 100%;
+  border: 1px solid #999999;
+  margin-bottom: 10px;
+}
+
+.profile-quote {
+  font-style: italic;
+}
+
+.profile-facts {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.online-now {
+  font-weight: bold;
+  color: #cc0000;
+  margin: 0;
+}
+
+/* ---- Contact module ------------------------------------------ */
+
+.contact-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contact-list li {
+  border-bottom: 1px solid #dddddd;
+  padding: 3px 0;
+}
+
+.contact-list li:last-child {
+  border-bottom: 0;
+}
+
+/* ---- Media player module ------------------------------------- */
+
+.now-playing {
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.player-box {
+  border: 1px solid #999999;
+  background: #f2f2f2;
+  padding: 8px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.album-art {
+  float: left;
+  width: 90px;
+  border: 1px solid #999999;
+  margin-right: 8px;
+}
+
+.player-info {
+  overflow: hidden;
+}
+
+.track-title {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.track-artist {
+  margin-bottom: 6px;
+}
+
+.player-controls {
+  margin-bottom: 6px;
+}
+
+.player-button {
+  display: inline-block;
+  border: 1px solid #999999;
+  background: #ffffff;
+  padding: 1px 6px;
+  margin-right: 3px;
+}
+
+.player-note {
+  color: #555555;
+  font-size: 11px;
+  margin: 0;
+}
+
+.player-projects-heading {
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.player-projects {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.player-projects li {
+  padding: 2px 0;
+}
+
+/* ---- Interests / Details tables ------------------------------ */
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-table th,
+.detail-table td {
+  border-bottom: 1px solid #dddddd;
+  padding: 4px 4px 4px 0;
+  text-align: left;
+  vertical-align: top;
+}
+
+.detail-table th {
+  width: 35%;
+  font-weight: bold;
+  background: #eef2f7;
+  padding-left: 4px;
+}
+
+.detail-table tr:last-child th,
+.detail-table tr:last-child td {
+  border-bottom: 0;
+}
+
+/* ---- Schools ------------------------------------------------- */
+
+.school {
+  border-bottom: 1px solid #dddddd;
+  padding-bottom: 8px;
+}
+
+.school:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.school-name {
+  font-weight: bold;
+}
+
+.school-years {
+  color: #555555;
+}
+
+/* ---- Funemployed banner -------------------------------------- */
+
+.funemployed-banner {
+  border: 1px solid #999999;
+  background: #f2f2f2;
+  color: #003399;
+  font-size: 28px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 40px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* ---- Blog entries -------------------------------------------- */
+
+.blog-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.blog-entry {
+  border-bottom: 1px solid #dddddd;
+  padding: 10px 0;
+  overflow: hidden;
+}
+
+.blog-entry:first-child {
+  padding-top: 0;
+}
+
+.blog-entry:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.blog-thumb-link {
+  float: left;
+  margin-right: 10px;
+}
+
+.blog-thumb {
+  display: block;
+  width: 80px;
+  border: 1px solid #999999;
+}
+
+.blog-entry-text {
+  overflow: hidden;
+}
+
+.blog-title {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.blog-date {
+  color: #555555;
+  font-size: 11px;
+  margin-bottom: 6px;
+}
+
+.blog-excerpt {
+  margin-bottom: 6px;
+}
+
+.blog-more,
+.blog-archive-link {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.blog-archive-link {
+  margin-top: 10px;
+}
+
+/* ---- Friends ------------------------------------------------- */
+
+.friend-list {
+  list-style: none;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.friend-card {
+  width: 100px;
+  text-align: center;
+}
+
+.friend-card a {
+  text-decoration: none;
+}
+
+.friend-image {
+  display: block;
+  width: 100px;
+  border: 1px solid #999999;
+  margin-bottom: 4px;
+}
+
+.friend-name {
+  text-decoration: underline;
+}
+
+.only-homie {
+  margin: 0;
+}
+
+/* ---- Post page ----------------------------------------------- */
+
+.post-meta {
+  color: #555555;
+  font-size: 11px;
+}
+
+.post-thumbnail {
+  border: 1px solid #999999;
+  max-width: 240px;
+}
+
+.post-body h1,
+.post-body h2,
+.post-body h3 {
+  font-size: 15px;
+  margin: 16px 0 6px;
+}
+
+.post-body img {
+  border: 1px solid #999999;
+}
+
+.post-back {
+  border-top: 1px solid #dddddd;
+  padding-top: 10px;
+  margin-bottom: 0;
+}
+
+/* ---- Mobile: one column at 700px and below ------------------- */
+
+@media (max-width: 700px) {
+
+  .profile-grid {
+    display: block;
+  }
+
+  .column-left {
+    margin-bottom: 10px;
+  }
+
+  .site-nav {
+    float: none;
+    display: block;
+    padding-top: 4px;
+  }
+
+  .funemployed-banner {
+    font-size: 22px;
+    padding: 30px 10px;
+  }
+
+}

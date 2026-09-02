@@ -1,0 +1,12 @@
+<div class="module module-schools">
+  <div class="module-header">Lain&rsquo;s Schools</div>
+  <div class="module-body">
+    {%- for school in site.data.modules.schools %}
+    <p class="school">
+      <span class="school-name">{{ school.name }}</span><br>
+      {{ school.detail }}<br>
+      <span class="school-years">{{ school.years }}</span>
+    </p>
+    {%- endfor %}
+  </div>
+</div>

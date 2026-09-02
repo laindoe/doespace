@@ -1,0 +1,94 @@
+# ---------------------------------------------------------------
+# Pages CMS configuration for DoeSpace
+# https://pagescms.org
+# ---------------------------------------------------------------
+
+media:
+  - name: blog_images
+    label: Blog Images
+    input: assets/images/blog
+    output: /assets/images/blog
+    categories: [image]
+
+content:
+  - name: posts
+    label: Blog Stories
+    type: collection
+    path: _posts
+    filename: '{fields.date}-{fields.title}.md'
+    view:
+      fields: [title, date, published, featured]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: layout
+        label: Layout
+        type: string
+        default: post
+        hidden: true
+      - name: title
+        label: Story Title
+        type: string
+        required: true
+      - name: date
+        label: Publication Date
+        type: date
+        required: true
+        options:
+          format: yyyy-MM-dd
+      - name: published
+        label: Published
+        type: boolean
+        default: true
+        description: Turn off to keep the story out of the live site.
+      - name: featured
+        label: Feature on Profile
+        type: boolean
+        default: false
+        description: Pin this story to the top of the profile blog module.
+      - name: thumbnail
+        label: Thumbnail
+        type: image
+        options:
+          media: blog_images
+      - name: excerpt
+        label: Short Description
+        type: text
+        description: Shown in the blog list on the profile and archive.
+      - name: categories
+        label: Categories
+        type: string
+        list: true
+      - name: body
+        label: Story Body
+        type: rich-text
+
+  - name: profile
+    label: Profile Details
+    type: file
+    path: _data/profile.yml
+    fields:
+      - name: display_name
+        label: Display name
+        type: string
+      - name: quote
+        label: Quote
+        type: string
+      - name: age
+        label: Age
+        type: string
+      - name: location
+        label: Location
+        type: string
+      - name: online_status
+        label: Online status
+        type: string
+      - name: homeostasis_url
+        label: Homeostasis link
+        type: string
+      - name: about_me
+        label: About Me text
+        type: text

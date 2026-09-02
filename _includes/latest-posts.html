@@ -1,0 +1,39 @@
+{%- comment -%}
+  Latest blog entries.
+  Posts flagged "featured: true" are shown first, then the newest remaining
+  posts, up to site.latest_posts_count. Unpublished posts are excluded by
+  Jekyll before this include ever runs.
+{%- endcomment -%}
+{%- assign featured_posts = site.posts | where: "featured", true -%}
+{%- assign other_posts = site.posts | where_exp: "item", "item.featured != true" -%}
+{%- assign ordered_posts = featured_posts | concat: other_posts -%}
+
+<div class="module module-blog">
+  <div class="module-header">Lain&rsquo;s Latest Blog Entries</div>
+  <div class="module-body">
+
+    {%- if ordered_posts.size > 0 %}
+    <ul class="blog-list">
+      {%- for post in ordered_posts limit: site.latest_posts_count %}
+      <li class="blog-entry">
+        <a class="blog-thumb-link" href="{{ post.url | relative_url }}">
+          <img class="blog-thumb"
+               src="{{ post.thumbnail | default: '/assets/images/placeholders/thumbnail.svg' | relative_url }}"
+               alt="{{ post.title }}">
+        </a>
+        <div class="blog-entry-text">
+          <p class="blog-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+          <p class="blog-date">{{ post.date | date: "%b %e, %Y" }}</p>
+          <p class="blog-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 180 }}</p>
+          <p class="blog-more"><a href="{{ post.url | relative_url }}">Read more &raquo;</a></p>
+        </div>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="blog-archive-link"><a href="{{ '/blog/' | relative_url }}">View all blog entries &raquo;</a></p>
+    {%- else %}
+    <p class="placeholder-note">No blog entries published yet.</p>
+    {%- endif %}
+
+  </div>
+</div>

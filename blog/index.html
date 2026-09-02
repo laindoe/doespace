@@ -1,0 +1,44 @@
+---
+layout: default
+title: Blog
+permalink: /blog/
+description: All blog entries from Lain Doe.
+---
+
+<div class="post-page">
+
+  <div class="module">
+    <div class="module-header">Lain&rsquo;s Blog Entries</div>
+    <div class="module-body">
+
+      {%- if site.posts.size > 0 %}
+      <ul class="blog-list">
+        {%- for post in site.posts %}
+        <li class="blog-entry">
+          <a class="blog-thumb-link" href="{{ post.url | relative_url }}">
+            <img class="blog-thumb"
+                 src="{{ post.thumbnail | default: '/assets/images/placeholders/thumbnail.svg' | relative_url }}"
+                 alt="{{ post.title }}">
+          </a>
+          <div class="blog-entry-text">
+            <p class="blog-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></p>
+            <p class="blog-date">
+              {{ post.date | date: "%b %e, %Y" }}
+              {%- if post.categories and post.categories.size > 0 %}
+              &middot; {{ post.categories | join: ", " }}
+              {%- endif %}
+            </p>
+            <p class="blog-excerpt">{{ post.excerpt | strip_html | strip_newlines | truncate: 180 }}</p>
+            <p class="blog-more"><a href="{{ post.url | relative_url }}">Read more &raquo;</a></p>
+          </div>
+        </li>
+        {%- endfor %}
+      </ul>
+      {%- else %}
+      <p class="placeholder-note">No blog entries published yet.</p>
+      {%- endif %}
+
+    </div>
+  </div>
+
+</div>

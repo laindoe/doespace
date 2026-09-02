@@ -1,0 +1,10 @@
+<div class="module module-contact">
+  <div class="module-header">Contact Lain</div>
+  <div class="module-body">
+    <ul class="contact-list">
+      {%- for link in site.data.modules.contact_links %}
+      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</div>
