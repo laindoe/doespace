@@ -734,6 +734,15 @@ p {
     margin-bottom: 0;
   }
 
+  /* A phone only sees the leftmost ~31% of the 1254px cloud tile, and that
+     strip is nearly empty sky at the top - so the page opened on bare blue.
+     Fit one whole tile to the screen width instead. Aspect ratio is kept
+     (auto height) so the clouds are scaled, never stretched, and the tile
+     still repeats down the page. The bubbles layer keeps its native size. */
+  body {
+    background-size: auto, 100% auto;
+  }
+
   /* Approved mobile homepage sequence. */
   .module-profile     { order: 1; }
   .module-contact     { order: 2; }
