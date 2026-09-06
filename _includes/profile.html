@@ -1,27 +1,35 @@
 {%- assign profile = site.data.profile -%}
 <div class="module module-profile">
-  <div class="module-body profile-box">
+  <div class="module-body">
 
-    <div class="profile-media">
-      <img class="profile-image"
-           src="{{ profile.profile_image | default: '/assets/images/placeholders/profile.svg' | relative_url }}"
-           alt="{{ profile.display_name | default: 'Lain Doe' }}">
-      <p class="profile-media-links">
-        <a href="{{ profile.pics_url | default: '#' }}">Pics</a>
-        <a href="{{ profile.videos_url | default: '#' }}">Videos</a>
-      </p>
-    </div>
+    <img class="profile-logo"
+         src="{{ profile.logo | default: '/assets/images/brand/lain-doe-logo.jpg' | relative_url }}"
+         alt="{{ profile.display_name | default: 'Lain Doe' }}">
 
-    <div class="profile-info">
-      <p class="profile-quote">&ldquo;{{ profile.quote }}&rdquo;</p>
+    <div class="profile-box">
 
-      <ul class="profile-facts">
-        {%- if profile.age %}<li><span class="fact-label">Age:</span> {{ profile.age }}</li>{% endif %}
-        {%- if profile.sex %}<li><span class="fact-label">Sex:</span> {{ profile.sex }}</li>{% endif %}
-        {%- if profile.location %}<li><span class="fact-label">Location:</span> {{ profile.location }}</li>{% endif %}
-      </ul>
+      <div class="profile-media">
+        <img class="profile-image"
+             src="{{ profile.profile_image | default: '/assets/images/placeholders/profile.svg' | relative_url }}"
+             alt="{{ profile.display_name | default: 'Lain Doe' }} profile photo">
+        <p class="profile-media-links">
+          <a href="{{ profile.pics_url | default: '#' }}">Pics</a>
+          <a href="{{ profile.videos_url | default: '#' }}">Videos</a>
+        </p>
+      </div>
 
-      <p class="profile-status"><span class="blink">{{ profile.online_status | default: "Always On" }}</span></p>
+      <div class="profile-info">
+        <p class="profile-quote">&ldquo;{{ profile.quote }}&rdquo;</p>
+
+        <ul class="profile-facts">
+          {%- if profile.age %}<li><span class="fact-label">Age:</span> {{ profile.age }}</li>{% endif %}
+          {%- if profile.sex %}<li><span class="fact-label">Sex:</span> {{ profile.sex }}</li>{% endif %}
+          {%- if profile.location %}<li><span class="fact-label">Location:</span> {{ profile.location }}</li>{% endif %}
+        </ul>
+
+        <p class="profile-status"><span class="blink">{{ profile.online_status | default: "Always On" }}</span></p>
+      </div>
+
     </div>
 
   </div>
