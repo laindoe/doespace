@@ -23,6 +23,14 @@
     syncToTop();
   }
 
+  /* ---- Copyright year ---------------------------------------- */
+
+  // The template prints the build year, which goes stale if the site is
+  // not rebuilt for a while. Correct it to the reader's current year.
+  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
   /* ---- Audio player ------------------------------------------ */
 
   var player = document.querySelector('[data-player]');

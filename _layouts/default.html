@@ -31,7 +31,7 @@
     {{ content }}
 
     <div class="site-footer">
-      &copy; {{ site.time | date: '%Y' }} {{ site.data.profile.display_name | default: 'Lain Doe' }} &middot;
+      &copy; <span data-year>{{ site.time | date: '%Y' }}</span> {{ site.data.profile.display_name | default: 'Lain Doe' }} &middot;
       <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
     </div>
 
