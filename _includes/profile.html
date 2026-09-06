@@ -2,10 +2,6 @@
 <div class="module module-profile">
   <div class="module-body">
 
-    <img class="profile-logo"
-         src="{{ profile.logo | default: '/assets/images/brand/lain-doe-logo.jpg' | relative_url }}"
-         alt="{{ profile.display_name | default: 'Lain Doe' }}">
-
     <div class="profile-box">
 
       <div class="profile-media">
@@ -19,6 +15,10 @@
       </div>
 
       <div class="profile-info">
+        <img class="profile-logo"
+             src="{{ profile.logo | default: '/assets/images/brand/lain-doe-logo.jpg' | relative_url }}"
+             alt="{{ profile.display_name | default: 'Lain Doe' }}">
+
         <p class="profile-quote">&ldquo;{{ profile.quote }}&rdquo;</p>
 
         <ul class="profile-facts">
