@@ -713,6 +713,10 @@ p {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    /* The desktop grid uses align-items: start. In a column flex
+       container that means "shrink to content width", which leaves
+       narrow modules short of the screen edge - stretch them instead. */
+    align-items: stretch;
   }
 
   .column {
