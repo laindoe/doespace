@@ -64,11 +64,6 @@ now_playing:
   artist: Lain Doe
   audio: /assets/audio/love-language.mp3
 
-other_projects:
-  - label: Placeholder Project One
-    url: "#"
-  - label: Placeholder Project Two
-    url: "#"
 
 friends:
   - name: Lain Doe Love
