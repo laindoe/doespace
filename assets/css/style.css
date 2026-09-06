@@ -196,9 +196,9 @@ p {
 }
 
 .module-header {
-  background: #6699cc;
+  background: #eaea5d;
   border-bottom: 1px solid #003399;
-  color: #ffffff;
+  color: #000000;
   font-weight: bold;
   padding: 4px 8px;
 }
