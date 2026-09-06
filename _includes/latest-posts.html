@@ -8,7 +8,7 @@
 {%- assign other_posts = site.posts | where_exp: "item", "item.featured != true" -%}
 {%- assign ordered_posts = featured_posts | concat: other_posts -%}
 
-<div class="module module-blog">
+<div class="module module-blog" id="blog">
   <div class="module-header">Lain&rsquo;s Latest Blog Entries</div>
   <div class="module-body">
 

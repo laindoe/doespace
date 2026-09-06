@@ -1,13 +1,20 @@
 /* ---------------------------------------------------------------
-   DoeSpace - Phase 1 stylesheet
-   Intentionally plain: Arial/Helvetica, bordered modules, blue
-   MySpace-style headers, white panels. All decoration comes later.
+   DoeSpace stylesheet
+
+   Desktop keeps the full MySpace-style two-column profile.
+   Mobile is a condensed, reordered single column - see the
+   "Mobile" block at the end of this file, which is the only place
+   the module order changes.
    --------------------------------------------------------------- */
 
 /* ---- Base ---------------------------------------------------- */
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -38,6 +45,23 @@ p {
   margin: 0 0 10px;
 }
 
+/* Anchor targets clear the top edge when jumped to. */
+[id] {
+  scroll-margin-top: 12px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* Traditional MySpace profile proportions. */
 .page {
   width: 100%;
@@ -45,43 +69,69 @@ p {
   margin: 0 auto;
 }
 
-/* ---- Site header / footer ------------------------------------ */
+/* ---- Site header --------------------------------------------- */
 
 .site-header {
-  background: #6699cc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  background: #eaea5d;
   border: 1px solid #003399;
-  color: #ffffff;
-  padding: 6px 10px;
+  padding: 8px 12px;
   margin-bottom: 10px;
 }
 
-.site-title {
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: bold;
+.site-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   text-decoration: none;
+  color: #000000;
 }
 
-.site-tagline {
-  font-size: 11px;
-  margin-left: 8px;
+.brand-icon {
+  display: block;
+  height: 44px;
+  width: auto;
+}
+
+.brand-text {
+  display: block;
+}
+
+.brand-wordmark {
+  display: block;
+  height: 26px;
+  width: auto;
+}
+
+.brand-tagline {
+  display: block;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin-top: 2px;
 }
 
 .site-nav {
-  float: right;
-  font-size: 11px;
-  padding-top: 6px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  font-weight: bold;
 }
 
 .site-nav a {
-  color: #ffffff;
+  color: #000000;
 }
 
-.site-header::after {
-  content: "";
-  display: block;
-  clear: both;
+.site-nav a:hover {
+  color: #cc0000;
 }
+
+/* ---- Site footer --------------------------------------------- */
 
 .site-footer {
   border: 1px solid #003399;
@@ -90,6 +140,36 @@ p {
   margin-top: 10px;
   font-size: 11px;
   text-align: center;
+}
+
+/* ---- Back-to-top bubble -------------------------------------- */
+
+.back-to-top {
+  position: fixed;
+  right: 14px;
+  bottom: 14px;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #003399;
+  border-radius: 50%;
+  background: #6699cc radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0) 55%);
+  color: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top svg {
+  width: 24px;
+  height: 24px;
+}
+
+.back-to-top:hover {
+  color: #ffffff;
+  background-color: #5588bb;
 }
 
 /* ---- Two-column profile grid --------------------------------- */
@@ -144,7 +224,14 @@ p {
   display: block;
   width: 100%;
   border: 1px solid #999999;
-  margin-bottom: 10px;
+}
+
+.profile-media-links {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 6px 0 10px;
+  font-size: 12px;
 }
 
 .profile-quote {
@@ -157,10 +244,28 @@ p {
   padding: 0;
 }
 
-.online-now {
+.fact-label {
   font-weight: bold;
-  color: #cc0000;
+}
+
+.profile-status {
   margin: 0;
+}
+
+.blink {
+  color: #cc0000;
+  font-weight: bold;
+  animation: doespace-blink 1.1s steps(1, end) infinite;
+}
+
+@keyframes doespace-blink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .blink { animation: none; }
 }
 
 /* ---- Contact module ------------------------------------------ */
@@ -171,71 +276,221 @@ p {
   padding: 0;
 }
 
-.contact-list li {
+.contact-item {
   border-bottom: 1px solid #dddddd;
-  padding: 3px 0;
 }
 
-.contact-list li:last-child {
+.contact-item:last-child {
   border-bottom: 0;
 }
 
-/* ---- Media player module ------------------------------------- */
+.contact-item a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+}
 
-.now-playing {
+.contact-icon {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- Media player -------------------------------------------- */
+
+.msplayer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px;
+  border: 1px solid #8f8f8f;
+  border-radius: 4px;
+  background: linear-gradient(#fbfbfb, #d6d6d6);
+}
+
+.msplayer-play {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 1px solid #7f7f7f;
+  border-radius: 50%;
+  background: linear-gradient(#ffffff, #c8c8c8);
+  color: #3a3a3a;
+  cursor: pointer;
+}
+
+.msplayer-play:hover {
+  background: linear-gradient(#ffffff, #b8b8b8);
+}
+
+.msplayer-play:focus-visible {
+  outline: 2px solid #003399;
+  outline-offset: 2px;
+}
+
+.msplayer-play svg {
+  width: 26px;
+  height: 26px;
+}
+
+.msplayer-play .icon-pause,
+.msplayer.is-playing .icon-play {
+  display: none;
+}
+
+.msplayer.is-playing .icon-pause {
+  display: block;
+}
+
+.msplayer-stack {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.msplayer-display {
+  background: #2b2b2b;
+  color: #ffffff;
+  border-radius: 2px;
+  padding: 5px 8px;
+  margin-bottom: 5px;
   font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.player-box {
-  border: 1px solid #999999;
-  background: #f2f2f2;
-  padding: 8px;
-  margin-bottom: 10px;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.album-art {
-  float: left;
-  width: 90px;
-  border: 1px solid #999999;
-  margin-right: 8px;
+.msplayer-by {
+  font-weight: normal;
+  color: #c9c9c9;
 }
 
-.player-info {
-  overflow: hidden;
+.msplayer-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
-.track-title {
-  font-weight: bold;
-  margin-bottom: 2px;
+.msplayer-speaker svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  color: #4a4a4a;
 }
 
-.track-artist {
-  margin-bottom: 6px;
-}
-
-.player-controls {
-  margin-bottom: 6px;
-}
-
-.player-button {
-  display: inline-block;
-  border: 1px solid #999999;
-  background: #ffffff;
-  padding: 1px 6px;
-  margin-right: 3px;
-}
-
-.player-note {
-  color: #555555;
-  font-size: 11px;
+/* Range input: pointer and keyboard seeking for free. */
+.msplayer-seek {
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 16px;
   margin: 0;
+  padding: 0;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.msplayer-seek:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+.msplayer-seek::-webkit-slider-runnable-track {
+  height: 14px;
+  border: 1px solid #6f6f6f;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0 var(--progress, 0%), rgba(0, 0, 0, 0) var(--progress, 0%)),
+    repeating-linear-gradient(90deg, #8f8f8f 0 2px, #ececec 2px 4px);
+}
+
+.msplayer-seek::-moz-range-track {
+  height: 14px;
+  border: 1px solid #6f6f6f;
+  border-radius: 2px;
+  background:
+    linear-gradient(90deg, rgba(0, 0, 0, 0.45) 0 var(--progress, 0%), rgba(0, 0, 0, 0) var(--progress, 0%)),
+    repeating-linear-gradient(90deg, #8f8f8f 0 2px, #ececec 2px 4px);
+}
+
+.msplayer-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 18px;
+  margin-top: -3px;
+  border: 1px solid #333333;
+  border-radius: 2px;
+  background: linear-gradient(#ffffff, #bfbfbf);
+}
+
+.msplayer-seek::-moz-range-thumb {
+  width: 8px;
+  height: 18px;
+  border: 1px solid #333333;
+  border-radius: 2px;
+  background: linear-gradient(#ffffff, #bfbfbf);
+}
+
+.msplayer-seek:focus-visible {
+  outline: 2px solid #003399;
+  outline-offset: 2px;
+}
+
+.msplayer-time {
+  flex: 0 0 auto;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+/* Plus / playlist / music-note: appearance only. Their actions are not
+   finalised, so they are inert decoration rather than dead buttons. */
+.msplayer-extras {
+  display: flex;
+  gap: 3px;
+}
+
+.msplayer-extra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #8a8a8a;
+  border-radius: 3px;
+  background: linear-gradient(#fdfdfd, #d2d2d2);
+  color: #5a5a5a;
+}
+
+.msplayer-extra svg {
+  width: 11px;
+  height: 11px;
+}
+
+.msplayer.is-loading .msplayer-display::after {
+  content: " \2026";
+}
+
+.msplayer.is-broken {
+  opacity: 0.65;
+}
+
+.msplayer-status {
+  margin: 6px 0 10px;
+  font-size: 12px;
+  color: #cc0000;
 }
 
 .player-projects-heading {
   font-weight: bold;
-  margin-bottom: 4px;
+  margin: 10px 0 4px;
 }
 
 .player-projects {
@@ -295,18 +550,26 @@ p {
   color: #555555;
 }
 
-/* ---- Funemployed banner -------------------------------------- */
+/* ---- Funemployed Land invitation ----------------------------- */
 
-.funemployed-banner {
-  border: 1px solid #999999;
-  background: #f2f2f2;
-  color: #003399;
-  font-size: 28px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  padding: 40px 10px;
-  text-align: center;
-  margin-bottom: 10px;
+.funemployed-body {
+  padding: 0;
+}
+
+.funemployed-invite {
+  display: block;
+  line-height: 0;
+}
+
+.funemployed-invite img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.funemployed-invite:focus-visible {
+  outline: 3px solid #003399;
+  outline-offset: 2px;
 }
 
 /* ---- Blog entries -------------------------------------------- */
@@ -436,27 +699,122 @@ p {
   margin-bottom: 0;
 }
 
-/* ---- Mobile: one column at 700px and below ------------------- */
+/* ---------------------------------------------------------------
+   Mobile: 700px and below.
+   One column, condensed and reordered. The desktop rules above are
+   untouched; everything specific to mobile lives here.
+   --------------------------------------------------------------- */
 
 @media (max-width: 700px) {
 
+  /* The two desktop columns dissolve so their modules can be
+     ordered into a single approved mobile sequence. */
   .profile-grid {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  .column-left {
-    margin-bottom: 10px;
+  .column {
+    display: contents;
+  }
+
+  .module {
+    margin-bottom: 0;
+  }
+
+  /* Approved mobile homepage sequence. */
+  .module-profile     { order: 1; }
+  .module-contact     { order: 2; }
+  .module-player      { order: 3; }
+  .module-funemployed { order: 4; }
+  .module-about       { order: 5; }
+  .module-blog        { order: 6; }
+  .module-friends     { order: 7; }
+  .module-comments    { order: 8; }
+
+  /* Desktop-only detail. Hidden on mobile, kept in the HTML and on
+     the desktop layout. */
+  .module-interests,
+  .module-details,
+  .module-schools {
+    display: none;
+  }
+
+  /* Header scales down without cropping or crowding. */
+  .site-header {
+    padding: 7px 10px;
+  }
+
+  .brand-icon {
+    height: 34px;
+  }
+
+  .brand-wordmark {
+    height: 20px;
+  }
+
+  .brand-tagline {
+    font-size: 11px;
   }
 
   .site-nav {
-    float: none;
-    display: block;
-    padding-top: 4px;
+    gap: 12px;
+    font-size: 12px;
   }
 
-  .funemployed-banner {
-    font-size: 22px;
-    padding: 30px 10px;
+  /* Profile stays a compact two-column box. */
+  .profile-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .profile-media {
+    flex: 0 0 43%;
+    max-width: 43%;
+  }
+
+  .profile-media-links {
+    margin-bottom: 0;
+    gap: 8px;
+  }
+
+  .profile-info {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .profile-quote {
+    margin-bottom: 8px;
+  }
+
+  /* Contact stays two columns: three rows, filled column by column. */
+  .contact-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
+    column-gap: 10px;
+  }
+
+  .contact-item {
+    border-bottom: 0;
+  }
+
+  .contact-item a {
+    padding: 6px 0;
+  }
+
+  .msplayer-extras {
+    display: none;
+  }
+
+  .back-to-top {
+    right: 12px;
+    bottom: 12px;
+    width: 54px;
+    height: 54px;
   }
 
 }

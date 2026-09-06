@@ -42,20 +42,27 @@ schools:
 contact_links:
   - label: Email
     url: "#"
+    icon: email
   - label: Instagram
     url: "#"
-  - label: Threads
-    url: "#"
-  - label: TikTok
-    url: "#"
+    icon: instagram
   - label: YouTube
     url: "#"
-  - label: Send Secret Message
+    icon: youtube
+  - label: Secret Message
     url: "#"
+    icon: secret-message
+  - label: Threads
+    url: "#"
+    icon: threads
+  - label: TikTok
+    url: "#"
+    icon: tiktok
 
 now_playing:
-  song: Funemployed
+  title: Funemployed
   artist: Lain Doe
+  audio: /assets/audio/love-language.mp3
 
 other_projects:
   - label: Placeholder Project One

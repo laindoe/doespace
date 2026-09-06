@@ -1,26 +1,58 @@
+{%- comment -%}
+  Custom MySpace-style audio player.
+  Display text and the audio path are stored separately in _data/modules.yml
+  so the final recording can replace the test file without touching markup.
+{%- endcomment -%}
 {%- assign track = site.data.modules.now_playing -%}
 <div class="module module-player">
   <div class="module-header">Media Player</div>
   <div class="module-body">
 
-    <p class="now-playing">Now Playing</p>
+    <div class="msplayer" data-player>
+      <audio data-audio preload="metadata" src="{{ track.audio | relative_url }}"></audio>
 
-    <div class="player-box">
-      <img class="album-art"
-           src="{{ '/assets/images/placeholders/album.svg' | relative_url }}"
-           alt="Album art placeholder">
-      <div class="player-info">
-        <p class="track-title">{{ track.song }}</p>
-        <p class="track-artist">{{ track.artist }}</p>
-        <p class="player-controls">
-          <span class="player-button">&#9198;</span>
-          <span class="player-button">&#9654;</span>
-          <span class="player-button">&#9209;</span>
-          <span class="player-button">&#9197;</span>
-        </p>
-        <p class="player-note">Player controls are placeholders in Phase 1.</p>
+      <button type="button" class="msplayer-play" data-play aria-label="Play {{ track.title }} by {{ track.artist }}">
+        <svg class="icon-play" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M11 7.5 24 16 11 24.5z" fill="currentColor"/>
+        </svg>
+        <svg class="icon-pause" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+          <path d="M11 7.5h4.2v17H11zM16.8 7.5H21v17h-4.2z" fill="currentColor"/>
+        </svg>
+      </button>
+
+      <div class="msplayer-stack">
+        <div class="msplayer-display">
+          <span class="msplayer-title">{{ track.title }}</span>
+          <span class="msplayer-by">by</span>
+          <span class="msplayer-artist">{{ track.artist }}</span>
+        </div>
+
+        <div class="msplayer-controls">
+          <span class="msplayer-speaker" aria-hidden="true">
+            <svg viewBox="0 0 16 16" focusable="false"><path d="M7 2.5 3.8 5.4H1.5v5.2h2.3L7 13.5z" fill="currentColor"/></svg>
+          </span>
+
+          <input class="msplayer-seek" type="range" min="0" max="100" step="0.1" value="0"
+                 data-seek aria-label="Seek" disabled>
+
+          <span class="msplayer-time" data-time>00:00</span>
+
+          <span class="msplayer-extras" aria-hidden="true">
+            <span class="msplayer-extra">
+              <svg viewBox="0 0 16 16" focusable="false"><path d="M6.6 2.5h2.8v4.1h4.1v2.8H9.4v4.1H6.6V9.4H2.5V6.6h4.1z" fill="currentColor"/></svg>
+            </span>
+            <span class="msplayer-extra">
+              <svg viewBox="0 0 16 16" focusable="false"><path d="M3 3.6h10v1.7H3zM3 7.15h10v1.7H3zM3 10.7h10v1.7H3z" fill="currentColor"/></svg>
+            </span>
+            <span class="msplayer-extra">
+              <svg viewBox="0 0 16 16" focusable="false"><path d="M12.5 2.2 6.4 3.9v6.4a2.3 2.3 0 1 0 1.5 2.2V5.4l4.6-1.3z" fill="currentColor"/></svg>
+            </span>
+          </span>
+        </div>
       </div>
     </div>
+
+    <p class="msplayer-status" data-status role="status" hidden></p>
 
     <p class="player-projects-heading">Other Projects</p>
     <ul class="player-projects">

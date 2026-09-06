@@ -3,7 +3,16 @@
   <div class="module-body">
     <ul class="contact-list">
       {%- for link in site.data.modules.contact_links %}
-      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+      <li class="contact-item">
+        <a href="{{ link.url }}">
+          {%- if link.icon %}
+          <img class="contact-icon"
+               src="{{ '/assets/images/icons/' | append: link.icon | append: '.svg' | relative_url }}"
+               alt="" aria-hidden="true">
+          {%- endif %}
+          <span class="contact-label">{{ link.label }}</span>
+        </a>
+      </li>
       {%- endfor %}
     </ul>
   </div>

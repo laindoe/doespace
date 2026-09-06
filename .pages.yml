@@ -80,6 +80,9 @@ content:
       - name: age
         label: Age
         type: string
+      - name: sex
+        label: Sex
+        type: string
       - name: location
         label: Location
         type: string
