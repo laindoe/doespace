@@ -40,7 +40,6 @@
   var play   = player.querySelector('[data-play]');
   var seek   = player.querySelector('[data-seek]');
   var time   = player.querySelector('[data-time]');
-  var status = document.querySelector('[data-status]');
 
   if (!audio || !play || !seek || !time) { return; }
 
@@ -54,17 +53,6 @@
     var m = Math.floor(seconds / 60);
     var s = Math.floor(seconds % 60);
     return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
-  };
-
-  var say = function (message) {
-    if (!status) { return; }
-    if (message) {
-      status.textContent = message;
-      status.hidden = false;
-    } else {
-      status.textContent = '';
-      status.hidden = true;
-    }
   };
 
   // Reflect the real element state; never show "playing" on our own guess.
@@ -92,7 +80,9 @@
     time.textContent = format(audio.currentTime);
   };
 
-  var fail = function (message) {
+  // No visible notice: the controls simply go inert, and the player never
+  // claims to be playing.
+  var fail = function () {
     broken = true;
     player.classList.remove('is-playing', 'is-loading');
     player.classList.add('is-broken');
@@ -103,7 +93,6 @@
     time.textContent = '00:00';
     seek.value = 0;
     paintProgress(0, 0);
-    say(message);
   };
 
   audio.addEventListener('loadedmetadata', function () {
@@ -120,7 +109,6 @@
 
   audio.addEventListener('play', function () {
     player.classList.remove('is-loading');
-    say('');
     syncPlayState();
   });
   audio.addEventListener('pause', syncPlayState);
@@ -136,7 +124,7 @@
   });
 
   audio.addEventListener('error', function () {
-    fail('Track unavailable.');
+    fail();
   });
 
   // Seeking: input[type=range] gives pointer AND keyboard control for free.
@@ -170,11 +158,7 @@
           // Autoplay block, decode failure or a missing file.
           player.classList.remove('is-loading');
           syncPlayState();
-          if (audio.error) {
-            fail('Track unavailable.');
-          } else {
-            say('Playback was blocked. Tap play again.');
-          }
+          if (audio.error) { fail(); }
         });
       }
     } else {
@@ -185,7 +169,7 @@
   // A source that never resolves (missing file) reports an error on the
   // <audio> element in some browsers and on the media resource in others.
   if (audio.networkState === HTMLMediaElement.NETWORK_NO_SOURCE) {
-    fail('Track unavailable.');
+    fail();
   }
 
   syncPlayState();
