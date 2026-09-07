@@ -31,11 +31,10 @@ body {
      closest to the viewer, so the bubbles sit above the clouds. Both are
      backgrounds, so neither can intercept clicks or scrolling, and the page
      content always renders above them.
-     The colour is the cloud image's own average sky tone. It shows through
-     as a fallback, and iOS Safari tints the status bar strip with it - that
-     strip is browser chrome, so no background image can be painted there,
-     and matching the sky is what makes it read as continuous. */
-  background-color: #96c8fa;
+     The colour is never visible: the cloud tile covers the whole canvas.
+     iOS samples it for the status bar strip (it ignores theme-color there),
+     so setting it to the header yellow makes that strip continue the bar. */
+  background-color: #eaea5d;
   background-image:
     url("../images/brand/bubbles.gif"),
     url("../images/brand/cloud-bg.jpg");
@@ -65,9 +64,9 @@ p {
   margin: 0 0 10px;
 }
 
-/* Anchor targets clear the top edge when jumped to. */
+/* Anchor targets clear the sticky header when jumped to. */
 [id] {
-  scroll-margin-top: 12px;
+  scroll-margin-top: 92px;
 }
 
 .visually-hidden {
@@ -92,6 +91,9 @@ p {
 /* ---- Site header --------------------------------------------- */
 
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
