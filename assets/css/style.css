@@ -24,8 +24,11 @@ body {
      closest to the viewer, so the bubbles sit above the clouds. Both are
      backgrounds, so neither can intercept clicks or scrolling, and the page
      content always renders above them.
-     Baby blue is sampled from the Lain Doe logo and shows only as a fallback. */
-  background-color: #60b3f9;
+     The colour is the cloud image's own average sky tone. It shows through
+     as a fallback, and iOS Safari tints the status bar strip with it - that
+     strip is browser chrome, so no background image can be painted there,
+     and matching the sky is what makes it read as continuous. */
+  background-color: #96c8fa;
   background-image:
     url("../images/brand/bubbles.gif"),
     url("../images/brand/cloud-bg.jpg");
