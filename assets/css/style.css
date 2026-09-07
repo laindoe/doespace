@@ -19,14 +19,7 @@ html {
 
 body {
   margin: 0;
-  /* viewport-fit=cover lets the background tile up behind the iOS status
-     bar. Inset the content by the safe areas so nothing hides under it.
-     env() is 0 everywhere else, so this is a no-op off iOS. */
   padding: 10px;
-  padding-top: calc(10px + env(safe-area-inset-top, 0px));
-  padding-right: calc(10px + env(safe-area-inset-right, 0px));
-  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-  padding-left: calc(10px + env(safe-area-inset-left, 0px));
   /* Two tiled background layers. In CSS the first image in the list paints
      closest to the viewer, so the bubbles sit above the clouds. Both are
      backgrounds, so neither can intercept clicks or scrolling, and the page
@@ -778,14 +771,13 @@ p {
      one continuous bar instead of a yellow strip, a gap, then the header.
      The negative margins cancel body's padding, safe-area insets included. */
   .site-header {
-    margin-top: calc(-1 * (10px + env(safe-area-inset-top, 0px)));
-    margin-right: calc(-1 * (10px + env(safe-area-inset-right, 0px)));
-    margin-left: calc(-1 * (10px + env(safe-area-inset-left, 0px)));
+    margin-top: -10px;
+    margin-right: -10px;
+    margin-left: -10px;
     border-top: 0;
     border-right: 0;
     border-left: 0;
     padding: 7px 10px;
-    padding-top: calc(7px + env(safe-area-inset-top, 0px));
   }
 
   .brand-icon {
