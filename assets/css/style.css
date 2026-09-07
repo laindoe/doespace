@@ -19,7 +19,14 @@ html {
 
 body {
   margin: 0;
+  /* viewport-fit=cover lets the background tile up behind the iOS status
+     bar. Inset the content by the safe areas so nothing hides under it.
+     env() is 0 everywhere else, so this is a no-op off iOS. */
   padding: 10px;
+  padding-top: calc(10px + env(safe-area-inset-top, 0px));
+  padding-right: calc(10px + env(safe-area-inset-right, 0px));
+  padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  padding-left: calc(10px + env(safe-area-inset-left, 0px));
   /* Two tiled background layers. In CSS the first image in the list paints
      closest to the viewer, so the bubbles sit above the clouds. Both are
      backgrounds, so neither can intercept clicks or scrolling, and the page
